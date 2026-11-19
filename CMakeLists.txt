@@ -4,7 +4,6 @@ project(ExperimentalSpaceEcho VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Fetch JUCE 8 automatically during build
 include(FetchContent)
 FetchContent_Declare(
     JUCE
@@ -26,6 +25,9 @@ juce_add_plugin(ExperimentalSpaceEcho
     FORMATS VST3 AU Standalone
     PRODUCT_NAME "Experimental Space Echo"
 )
+
+# Generates JuceHeader.h in JUCE 8 CMake builds
+juce_generate_juce_header(ExperimentalSpaceEcho)
 
 target_sources(ExperimentalSpaceEcho PRIVATE
     Source/PluginProcessor.h
